@@ -4,9 +4,9 @@ const config = require('./utils');
 const MessageCurator = require('./messageCurator');
 
 class MessageStorage {
-  constructor() {
+  constructor(sock = null) {
     console.log('🔧 [DEBUG] MessageStorage constructor called');
-    this.curator = new MessageCurator();
+    this.curator = new MessageCurator(sock); // 🆕 Pass socket to curator
     this.config = config.messageScraping;
     this.filePath = this.config.filePath;
     this.messages = new Map();

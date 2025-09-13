@@ -1,14 +1,13 @@
 const OpenAI = require('openai');
 const fs = require('fs');
 const path = require('path');
+const NotificationService = require('./notificationService');
 
 class MessageCurator {
-  constructor() {
-    console.log('🔧 [DEBUG] MessageCurator constructor called');
-    this.openai = new OpenAI({ 
-      apiKey: process.env.OPENAI_API_KEY 
+  constructor(sock = null) {
+    this.openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY
     });
-    console.log('🔧 [DEBUG] OpenAI client initialized with API key:', process.env.OPENAI_API_KEY ? 'Present' : 'Missing');
     
     // Your taste profile - customize this based on your preferences
     this.taste = {
@@ -53,6 +52,9 @@ class MessageCurator {
     
     this.relevantMessagesPath = path.join(__dirname, 'relevant_messages.json');
     console.log('🔧 [DEBUG] Relevant messages path set to:', this.relevantMessagesPath);
+    
+    // Initialize notification service if socket is provided
+    this.notificationService = sock ? new NotificationService(sock) : null;
   }
 
   // Convert scraped messages format to simple format for curation
@@ -265,7 +267,8 @@ Return JSON ONLY with:
             category: item.category,
             reason: item.reason,
             curatedAt: new Date().toISOString()
-          }
+          },
+          notified: false // 🆕 Track notification status
         });
       }
     });
@@ -298,11 +301,50 @@ Return JSON ONLY with:
         'utf8'
       );
       console.log(`✅ [DEBUG] Successfully saved ${uniqueNewMessages.length} new relevant messages (${allMessages.length} total) to relevant_messages.json`);
+      
+      // 🆕 Send notifications for new messages
+      if (this.notificationService && uniqueNewMessages.length > 0) {
+        console.log(`📤 Sending notifications for ${uniqueNewMessages.length} new messages`);
+        const notificationResults = await this.notificationService.sendNotifications(uniqueNewMessages);
+        
+        // Update notified status for successfully sent messages
+        const successfulNotifications = notificationResults.filter(r => r.success);
+        if (successfulNotifications.length > 0) {
+          await this.updateNotificationStatus(successfulNotifications.map(r => r.messageId));
+        }
+      }
+      
       console.log('🔧 [DEBUG] File write completed successfully');
       return relevantMessages;
     } catch (error) {
       console.error('🔧 [DEBUG] Error saving curated messages:', error);
       throw error;
+    }
+  }
+  
+  /**
+   * Update notification status for messages
+   */
+  async updateNotificationStatus(messageIds) {
+    try {
+      const data = JSON.parse(await fs.promises.readFile(this.relevantMessagesPath, 'utf8'));
+      
+      data.messages.forEach(message => {
+        if (messageIds.includes(message.id)) {
+          message.notified = true;
+          message.notifiedAt = new Date().toISOString();
+        }
+      });
+      
+      await fs.promises.writeFile(
+        this.relevantMessagesPath,
+        JSON.stringify(data, null, 2),
+        'utf8'
+      );
+      
+      console.log(`✅ Updated notification status for ${messageIds.length} messages`);
+    } catch (error) {
+      console.error('❌ Error updating notification status:', error);
     }
   }
 }

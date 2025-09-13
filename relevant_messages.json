@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2025-09-13T23:01:47.148Z",
+  "lastUpdated": "2025-09-13T23:27:00.265Z",
   "curatedBy": "openai-gpt-4o-mini",
   "totalEvaluated": 1,
   "totalRelevant": 1,
-  "totalMessages": 5,
+  "totalMessages": 7,
   "messages": [
     {
       "id": "3A0894223527C74142CF",
@@ -33,6 +33,23 @@
         "reason": "Recent seed funding round for a Colombian fintech, providing specific details about the amount raised ($3.2M) and notable investors (YC and Kaszek).",
         "curatedAt": "2025-09-13T23:01:47.148Z"
       }
+    },
+    {
+      "id": "3EB0FC0EBB5E60E9C744B1",
+      "text": "Series B funding, $25M valuation for a Brazilian edtech platform expanding to Mexico",
+      "ts": "2025-09-13T23:26:55.000Z",
+      "author": "Hermes",
+      "groupId": "120363423264036001@g.us",
+      "groupName": "Grupo de condominio",
+      "messageType": "text",
+      "curation": {
+        "relevance": 1,
+        "category": "latam",
+        "reason": "This message provides specific information about a Series B funding round with a $25M valuation for a Brazilian edtech platform, which is highly relevant to the user's interests in LatAm startups and venture capital.",
+        "curatedAt": "2025-09-13T23:27:00.265Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-13T23:27:00.740Z"
     },
     {
       "id": "3AE240EF214EE7D68756",
@@ -75,6 +92,23 @@
         "reason": "Mentions 4 new hardware unicorns in LatAm, which aligns with the user's interest in LatAm startups and hardware design.",
         "curatedAt": "2025-09-13T22:56:33.719Z"
       }
+    },
+    {
+      "id": "3EB0652B23BEB5D735178A",
+      "text": "Launching MVP for an AI-powered B2B SaaS — need beta testers.",
+      "ts": "2025-09-13T23:21:43.000Z",
+      "author": "Hermes",
+      "groupId": "120363402098083507@g.us",
+      "groupName": "Test",
+      "messageType": "text",
+      "curation": {
+        "relevance": 0.8,
+        "category": "AI",
+        "reason": "The message discusses launching an MVP for an AI-powered B2B SaaS, which aligns with the user's interest in startups and AI. It also seeks beta testers, indicating actionable next steps.",
+        "curatedAt": "2025-09-13T23:21:52.064Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-13T23:21:52.548Z"
     }
   ]
 }

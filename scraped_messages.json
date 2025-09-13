@@ -1,13 +1,18 @@
 {
-  "lastUpdated": "2025-09-13T23:01:47.149Z",
+  "lastUpdated": "2025-09-13T23:27:00.740Z",
   "stats": {
-    "totalGroups": 1,
-    "totalMessages": 25,
+    "totalGroups": 2,
+    "totalMessages": 32,
     "groupStats": {
       "120363402098083507@g.us": {
         "groupName": "Test",
-        "messageCount": 25,
-        "lastMessage": 1757804498
+        "messageCount": 27,
+        "lastMessage": 1757805703
+      },
+      "120363423264036001@g.us": {
+        "groupName": "Grupo de condominio",
+        "messageCount": 5,
+        "lastMessage": 1757806015
       }
     }
   },
@@ -615,6 +620,183 @@
           "scrapedAt": "2025-09-13T23:01:45.439Z",
           "processed": true,
           "processedAt": "2025-09-13T23:01:47.149Z"
+        }
+      },
+      {
+        "id": "3EB0474018529A434F5E49",
+        "timestamp": 1757805680,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Did you see what the Kardashians wore last night?",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:21:23.518Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:21:25.538Z"
+        }
+      },
+      {
+        "id": "3EB0652B23BEB5D735178A",
+        "timestamp": 1757805703,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Launching MVP for an AI-powered B2B SaaS — need beta testers.",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:21:50.282Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:21:52.548Z"
+        }
+      }
+    ],
+    "120363423264036001@g.us": [
+      {
+        "id": "3EB0FCE04D0CD16E6CC954",
+        "timestamp": 1757805820,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "“Spam deal: Click here for free iPhone giveaway!!!”",
+          "type": "senderKeyDistributionMessage",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "senderKeyDistributionMessage",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:23:43.720Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:23:45.392Z"
+        }
+      },
+      {
+        "id": "3EB0ADC5C198B1F8886EA6",
+        "timestamp": 1757805827,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "5.\t“Breaking gossip: celebrity couple split up again 😱.”",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:23:54.098Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:23:55.510Z"
+        }
+      },
+      {
+        "id": "3EB0C138DD6C947D9E3497",
+        "timestamp": 1757805872,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "“Breaking gossip: celebrity couple split up again 😱.”",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:24:39.988Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:24:42.408Z"
+        }
+      },
+      {
+        "id": "3EB0448BC590D47EDE79AA",
+        "timestamp": 1757805982,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "OpenAI just announced new GPT model improvements for multilingual NLP",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:26:29.722Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:26:31.987Z"
+        }
+      },
+      {
+        "id": "3EB0FC0EBB5E60E9C744B1",
+        "timestamp": 1757806015,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Series B funding, $25M valuation for a Brazilian edtech platform expanding to Mexico",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:26:58.382Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:27:00.740Z"
         }
       }
     ]

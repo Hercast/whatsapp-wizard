@@ -3,10 +3,10 @@
 // Triggers when a new message is received in the chat.
 
 const config = require("./../utils");
-const MessageStorage = require("./../messageStorage");
+const MessageStorage = require('../messageStorage');
 const prefix = config.bot?.prefix || "!";
 
-// Initialize message storage
+// Initialize with socket for notifications
 const messageStorage = new MessageStorage();
 
 // Load existing messages on startup
@@ -15,13 +15,16 @@ messageStorage.load().catch(console.error);
 module.exports = {
   eventName: "messages.upsert",
   /**
-   * Handles new incoming messages, scrapes them, and executes commands.
+   * Handles the messages.upsert event.
    * @param {object} sock - The WhatsApp socket instance.
    * @param {object} logger - Logger for logging info and errors.
-   * @param {Map} commands - Map of available commands.
+   * @param {Map} commands - Available bot commands.
    * @returns {Function}
    */
-  handler: (sock, logger, commands) => async ({ messages }) => {
+  handler: (sock, logger, commands) => async ({ messages, type }) => {
+    // Update the messageStorage instance with current socket
+    messageStorage.curator = new (require('../messageCurator'))(sock);
+    
     const msg = messages[0];
     if (!msg.message) return;
     
@@ -43,7 +46,7 @@ module.exports = {
     // Message scraping for groups (only if not from bot)
     if (isGroup && !msg.key.fromMe && config.messageScraping?.enabled) {
       try {
-        await messageStorage.addMessage(from, msg, sock); // 🆕 Pass sock instance
+        await messageStorage.addMessage(from, msg, sock);
       } catch (error) {
         logger.error(`Error scraping message: ${error.message}`);
       }
