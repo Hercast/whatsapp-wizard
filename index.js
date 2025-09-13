@@ -1,4 +1,6 @@
 
+require('dotenv').config();
+
 /**
  * WhatsApp Bot Entry Point
  * Loads config, commands, events, and starts the bot.
