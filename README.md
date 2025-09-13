@@ -29,9 +29,8 @@ This is a simple and powerful WhatsApp bot built using the [Baileys](https://git
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/nexoscreator/whatsapp-bot-baileys.git
-cd whatsapp-bot-baileys
-````
+
+```
 
 ### 2. Install dependencies
 
@@ -51,11 +50,9 @@ Open WhatsApp on your phone → Menu → Linked Devices → Scan QR code from te
 
 ---
 
-## 💬 Bot Logic
-
 Right now, the bot handles the following:
 
-* If the user sends `"!hi"` or `"!Hi"`, it replies with:
+- If the user sends `"!hi"` or `"!Hi"`, it replies with:
 
   > Hello! 👋 I am your bot.
 
@@ -67,9 +64,9 @@ You can modify and extend this behavior in `index.js` or commands dir.
 
 You can deploy your bot on platforms like:
 
-* [Railway](https://railway.app)
-* [Render](https://render.com)
-* \[VPS (DigitalOcean, AWS, etc.)]
+- [Railway](https://railway.app)
+- [Render](https://render.com)
+- \[VPS (DigitalOcean, AWS, etc.)]
 
 ---
 
@@ -77,9 +74,9 @@ You can deploy your bot on platforms like:
 
 This bot uses an unofficial WhatsApp API via Web scraping (like WhatsApp Web). Your number may be banned if used incorrectly. Do **NOT** use this bot for:
 
-* Bulk messaging
-* Spamming
-* Commercial purposes
+- Bulk messaging
+- Spamming
+- Commercial purposes
 
 ---
 
@@ -97,17 +94,7 @@ We ❤️ contributions! Follow these steps to contribute:
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
 ---
-
-## 📬 Contact & Community
-
-💬 Join us on **Discord**: [Click Here](https://discord.gg/H7pVc9aUK2)  
-🐦 **Follow on Twitter**: [@nexoscreator](https://twitter.com/nexoscreator)  
-📧 **Email**: [contact@nexoscreator.tech](mailto:contact@nexoscreator.tech)
 
 If you find this project helpful, please consider **starring ⭐ the repository** or **sponsoring 💖 on GitHub**!
 

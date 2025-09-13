@@ -7,7 +7,11 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["bot", "whatsapp-bot", "baileys"],
+  "keywords": [
+    "bot",
+    "whatsapp-bot",
+    "baileys"
+  ],
   "author": "nexoscreator",
   "license": "MIT",
   "dependencies": {
