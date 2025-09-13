@@ -1,18 +1,18 @@
 {
-  "lastUpdated": "2025-09-13T23:27:00.740Z",
+  "lastUpdated": "2025-09-13T23:42:46.716Z",
   "stats": {
     "totalGroups": 2,
-    "totalMessages": 32,
+    "totalMessages": 37,
     "groupStats": {
       "120363402098083507@g.us": {
         "groupName": "Test",
-        "messageCount": 27,
-        "lastMessage": 1757805703
+        "messageCount": 29,
+        "lastMessage": 1757806957
       },
       "120363423264036001@g.us": {
         "groupName": "Grupo de condominio",
-        "messageCount": 5,
-        "lastMessage": 1757806015
+        "messageCount": 8,
+        "lastMessage": 1757806957
       }
     }
   },
@@ -671,6 +671,56 @@
           "processed": true,
           "processedAt": "2025-09-13T23:21:52.548Z"
         }
+      },
+      {
+        "id": "3A7663E0B191685AADBC",
+        "timestamp": 1757806769,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Demo Day next week at SF’s Mission HQ — 12 LatAm startups pitching. Sam Altman is presenting the new AGI product",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:39:47.598Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:39:51.064Z"
+        }
+      },
+      {
+        "id": "3AB0328B5E9F49B4AFBF",
+        "timestamp": 1757806957,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Good morning family! Hope you are doing great",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:42:41.300Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:42:42.854Z"
+        }
       }
     ],
     "120363423264036001@g.us": [
@@ -797,6 +847,81 @@
           "scrapedAt": "2025-09-13T23:26:58.382Z",
           "processed": true,
           "processedAt": "2025-09-13T23:27:00.740Z"
+        }
+      },
+      {
+        "id": "3EB03EB2DA23E9EBF92FFE",
+        "timestamp": 1757806770,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Breaking gossip: celebrity couple split up again 😱",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:39:47.381Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:39:51.064Z"
+        }
+      },
+      {
+        "id": "3EB0C82C84BE888D780503",
+        "timestamp": 1757806818,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Seed funding round closed: Venezuelan fintech raised $100M led by Sequoia and 500.",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:40:21.178Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:40:23.112Z"
+        }
+      },
+      {
+        "id": "3EB0D858043C3057F991DF",
+        "timestamp": 1757806957,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "hey guys, my startup just closed a seed round 🎉 $2.5M led by a VC from SF 🙌",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:42:44.960Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:42:46.716Z"
         }
       }
     ]

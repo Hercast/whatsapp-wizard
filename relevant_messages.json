@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2025-09-13T23:27:00.265Z",
+  "lastUpdated": "2025-09-13T23:42:46.564Z",
   "curatedBy": "openai-gpt-4o-mini",
   "totalEvaluated": 1,
   "totalRelevant": 1,
-  "totalMessages": 7,
+  "totalMessages": 10,
   "messages": [
     {
       "id": "3A0894223527C74142CF",
@@ -50,6 +50,57 @@
       },
       "notified": true,
       "notifiedAt": "2025-09-13T23:27:00.740Z"
+    },
+    {
+      "id": "3A7663E0B191685AADBC",
+      "text": "Demo Day next week at SF’s Mission HQ — 12 LatAm startups pitching. Sam Altman is presenting the new AGI product",
+      "ts": "2025-09-13T23:39:29.000Z",
+      "author": "Hermes",
+      "groupId": "120363402098083507@g.us",
+      "groupName": "Test",
+      "messageType": "text",
+      "curation": {
+        "relevance": 1,
+        "category": "latam",
+        "reason": "This message highlights a Demo Day event in San Francisco featuring 12 LatAm startups, which aligns perfectly with the user's interests in startups and the LatAm tech scene. The mention of Sam Altman presenting adds credibility and relevance.",
+        "curatedAt": "2025-09-13T23:39:50.913Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-13T23:39:51.064Z"
+    },
+    {
+      "id": "3EB0C82C84BE888D780503",
+      "text": "Seed funding round closed: Venezuelan fintech raised $100M led by Sequoia and 500.",
+      "ts": "2025-09-13T23:40:18.000Z",
+      "author": "Hermes",
+      "groupId": "120363423264036001@g.us",
+      "groupName": "Grupo de condominio",
+      "messageType": "text",
+      "curation": {
+        "relevance": 1,
+        "category": "venture-capital",
+        "reason": "This message provides specific details about a $100M seed funding round for a Venezuelan fintech, which aligns with the user's interest in LatAm startups and venture capital.",
+        "curatedAt": "2025-09-13T23:40:22.962Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-13T23:40:23.111Z"
+    },
+    {
+      "id": "3EB0D858043C3057F991DF",
+      "text": "hey guys, my startup just closed a seed round 🎉 $2.5M led by a VC from SF 🙌",
+      "ts": "2025-09-13T23:42:37.000Z",
+      "author": "Hermes",
+      "groupId": "120363423264036001@g.us",
+      "groupName": "Grupo de condominio",
+      "messageType": "text",
+      "curation": {
+        "relevance": 1,
+        "category": "startup",
+        "reason": "The message shares specific details about a startup closing a $2.5M seed round led by a VC from San Francisco, which aligns perfectly with the user's interests in startups and venture capital.",
+        "curatedAt": "2025-09-13T23:42:46.564Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-13T23:42:46.716Z"
     },
     {
       "id": "3AE240EF214EE7D68756",

@@ -25,6 +25,107 @@ class MessageStorage {
     console.log('🔧 [DEBUG] MessageStorage initialized with immediate save mode');
   }
 
+  // New fast processing method without delays
+  async addMessageFast(groupId, messageData, sock = null, groupName = null) {
+    if (!this.config.enabled) return;
+    
+    // Skip expensive filters for high-volume processing
+    if (!this.shouldStoreMessageFast(messageData)) {
+      return;
+    }
+
+    // Initialize group storage if needed
+    if (!this.messages.has(groupId)) {
+      this.messages.set(groupId, []);
+      this.messageCount.set(groupId, 0);
+    }
+
+    const messages = this.messages.get(groupId);
+    const currentCount = this.messageCount.get(groupId);
+    
+    // Check max messages per group
+    if (currentCount >= (this.config.maxMessagesPerGroup || 1000)) {
+      messages.shift();
+    } else {
+      this.messageCount.set(groupId, currentCount + 1);
+    }
+
+    // Process message with cached group name
+    const processedMessage = await this.processMessageFast(messageData, sock, groupName);
+    messages.push(processedMessage);
+    
+    console.log(`📥 Fast stored message from group ${groupId} (${messages.length} total)`);
+    
+    // Batch save every 10 messages instead of immediate save
+    this.pendingSaveCount = (this.pendingSaveCount || 0) + 1;
+    if (this.pendingSaveCount >= 10) {
+      this.debouncedSave();
+      this.pendingSaveCount = 0;
+    }
+  }
+
+  async processMessageFast(messageData, sock = null, groupName = null) {
+    const groupId = messageData.key?.remoteJid;
+    
+    // Use provided group name instead of fetching
+    const finalGroupName = groupName || 'Unknown Group';
+    
+    const processed = {
+      id: messageData.key?.id || 'unknown',
+      timestamp: messageData.messageTimestamp || Date.now(),
+      sender: {
+        id: messageData.key?.participant || messageData.key?.remoteJid || 'unknown',
+        name: messageData.pushName || 'Unknown',
+        isBot: messageData.key?.fromMe || false
+      },
+      content: {
+        text: this.extractText(messageData.message),
+        type: this.getMessageType(messageData.message),
+        hasMedia: this.hasMedia(messageData.message),
+        isForwarded: messageData.message?.extendedTextMessage?.contextInfo?.isForwarded || false,
+        quotedMessage: this.extractQuotedMessage(messageData.message)
+      },
+      metadata: {
+        groupId: groupId,
+        groupName: finalGroupName,
+        messageType: messageData.message ? Object.keys(messageData.message)[0] : 'unknown',
+        scraped: true,
+        scrapedAt: new Date().toISOString(),
+        processed: false,
+        processedAt: null
+      }
+    };
+
+    return processed;
+  }
+
+  shouldStoreMessageFast(messageData) {
+    // Simplified filtering for high-volume processing
+    const text = this.extractText(messageData.message);
+    return text && text.length >= 5; // Basic length check only
+  }
+
+  debouncedSave() {
+    // Debounce save operations
+    clearTimeout(this.saveTimeout);
+    this.saveTimeout = setTimeout(async () => {
+      try {
+        await this.saveToFile();
+        console.log(`💾 Batch saved messages to file`);
+        
+        // Trigger curation less frequently
+        if (!this.curationTimeout) {
+          this.curationTimeout = setTimeout(async () => {
+            await this.triggerCuration();
+            this.curationTimeout = null;
+          }, 30000); // Wait 30 seconds before curation
+        }
+      } catch (error) {
+        console.error('Error in debounced save:', error);
+      }
+    }, 2000); // Save after 2 seconds of inactivity
+  }
+
   /**
    * Add a message to storage with human-like processing
    */
