@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2025-09-13T22:22:23.424Z",
+  "lastUpdated": "2025-09-13T23:01:47.148Z",
   "curatedBy": "openai-gpt-4o-mini",
   "totalEvaluated": 1,
-  "totalRelevant": 0,
-  "totalMessages": 3,
+  "totalRelevant": 1,
+  "totalMessages": 5,
   "messages": [
     {
       "id": "3A0894223527C74142CF",
@@ -17,6 +17,21 @@
         "category": "latam",
         "reason": "Yummy becoming the first unicorn in Venezuela is a significant milestone in the LatAm startup ecosystem, showcasing growth and innovation in the region.",
         "curatedAt": "2025-09-13T22:18:42.069Z"
+      }
+    },
+    {
+      "id": "3EB0567CC9C38C0C740E0B",
+      "text": "Seed funding round closed: Colombian fintech raised $3.2M led by YC and Kaszek.",
+      "ts": "2025-09-13T23:01:38.000Z",
+      "author": "Hermes",
+      "groupId": "120363402098083507@g.us",
+      "groupName": "Test",
+      "messageType": "text",
+      "curation": {
+        "relevance": 1,
+        "category": "venture-capital",
+        "reason": "Recent seed funding round for a Colombian fintech, providing specific details about the amount raised ($3.2M) and notable investors (YC and Kaszek).",
+        "curatedAt": "2025-09-13T23:01:47.148Z"
       }
     },
     {
@@ -45,6 +60,20 @@
         "category": "AI",
         "reason": "Allspice's launch of a new AI copilot for hardware design is highly relevant to the user's interests in hardware engineering and AI, indicating innovation in the field.",
         "curatedAt": "2025-09-13T22:20:29.008Z"
+      }
+    },
+    {
+      "id": "3A2F9F84249A68BFECFC",
+      "text": "4 unicornios nuevos de hardware en latam que sorprendieron a todos en 2025",
+      "ts": "2025-09-13T22:56:28.000Z",
+      "author": "Hermes",
+      "groupId": "120363402098083507@g.us",
+      "messageType": "text",
+      "curation": {
+        "relevance": 0.9,
+        "category": "latam",
+        "reason": "Mentions 4 new hardware unicorns in LatAm, which aligns with the user's interest in LatAm startups and hardware design.",
+        "curatedAt": "2025-09-13T22:56:33.719Z"
       }
     }
   ]

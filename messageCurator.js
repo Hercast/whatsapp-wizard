@@ -71,6 +71,9 @@ class MessageCurator {
       const groupMessages = scrapedData.messages[groupId];
       console.log(`🔧 [DEBUG] Processing group ${groupId} with ${groupMessages.length} messages`);
       
+      // Get group name from stats
+      const groupName = scrapedData.stats?.groupStats?.[groupId]?.groupName || 'Unknown Group';
+      
       groupMessages.forEach(msg => {
         // Only include unprocessed messages
         if (!msg.metadata.processed) {
@@ -80,6 +83,7 @@ class MessageCurator {
             ts: new Date(msg.timestamp * 1000).toISOString(),
             author: msg.sender.name || 'Unknown',
             groupId: groupId,
+            groupName: groupName,
             messageType: msg.content.type
           });
         }

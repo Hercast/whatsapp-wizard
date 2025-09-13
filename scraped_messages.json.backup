@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-09-13T22:22:21.996Z",
+  "lastUpdated": "2025-09-13T22:22:23.424Z",
   "stats": {
     "totalGroups": 1,
     "totalMessages": 21,
@@ -512,8 +512,8 @@
           "messageType": "conversation",
           "scraped": true,
           "scrapedAt": "2025-09-13T22:22:21.996Z",
-          "processed": false,
-          "processedAt": null
+          "processed": true,
+          "processedAt": "2025-09-13T22:22:23.424Z"
         }
       }
     ]

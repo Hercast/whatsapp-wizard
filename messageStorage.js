@@ -28,7 +28,7 @@ class MessageStorage {
   /**
    * Add a message to storage with human-like processing
    */
-  async addMessage(groupId, messageData) {
+  async addMessage(groupId, messageData, sock = null) {
     if (!this.config.enabled) return;
     
     // Apply filters
@@ -64,8 +64,8 @@ class MessageStorage {
       this.messageCount.set(groupId, currentCount + 1);
     }
     
-    // Store the message
-    const processedMessage = this.processMessage(messageData);
+    // Store the message with group metadata
+    const processedMessage = await this.processMessage(messageData, sock);
     messages.push(processedMessage);
     
     console.log(`📥 Stored message from group ${groupId} (${messages.length} total)`);
@@ -74,6 +74,9 @@ class MessageStorage {
     try {
       await this.saveToFile();
       console.log(`💾 Message saved immediately to file`);
+      
+      // 🆕 Trigger curation after saving
+      await this.triggerCuration();
     } catch (error) {
       console.error('Error saving message immediately:', error);
       // Don't throw - continue processing even if save fails
@@ -83,7 +86,22 @@ class MessageStorage {
   /**
    * Process and structure message data
    */
-  processMessage(messageData) {
+  async processMessage(messageData, sock = null) {
+    const groupId = messageData.key?.remoteJid;
+    let groupName = null;
+    
+    // Fetch group metadata if socket is available and it's a group
+    if (sock && groupId && groupId.endsWith('@g.us')) {
+      try {
+        const groupMetadata = await sock.groupMetadata(groupId);
+        groupName = groupMetadata.subject || 'Unknown Group';
+        console.log(`📋 Retrieved group name: ${groupName} for ${groupId}`);
+      } catch (error) {
+        console.warn(`⚠️ Could not fetch group metadata for ${groupId}:`, error.message);
+        groupName = 'Unknown Group';
+      }
+    }
+    
     const processed = {
       id: messageData.key?.id || 'unknown',
       timestamp: messageData.messageTimestamp || Date.now(),
@@ -100,7 +118,8 @@ class MessageStorage {
         quotedMessage: this.extractQuotedMessage(messageData.message)
       },
       metadata: {
-        groupId: messageData.key?.remoteJid,
+        groupId: groupId,
+        groupName: groupName,
         messageType: messageData.message ? Object.keys(messageData.message)[0] : 'unknown',
         scraped: true,
         scrapedAt: new Date().toISOString(),
@@ -353,36 +372,38 @@ class MessageStorage {
   }
 
   async saveToFile() {
+    if (!this.config.saveToFile) return;
+    
     try {
       const data = {
         lastUpdated: new Date().toISOString(),
-        stats: this.getStats(),
-        messages: Object.fromEntries(this.messages)
+        stats: {
+          totalGroups: this.messages.size,
+          totalMessages: Array.from(this.messages.values()).reduce((sum, msgs) => sum + msgs.length, 0),
+          groupStats: {}
+        },
+        messages: {}
       };
-
-      // Atomic write with backup
-      const tempPath = this.filePath + '.tmp';
-      await fs.writeFile(tempPath, JSON.stringify(data, null, 2));
       
-      // Check if file exists using fs.access instead of fs.existsSync
-      try {
-        await fs.access(this.filePath);
-        await fs.copyFile(this.filePath, this.filePath + '.backup');
-      } catch (error) {
-        // File doesn't exist, skip backup
+      // Build group stats and messages with group names
+      for (const [groupId, messages] of this.messages.entries()) {
+        const lastMessage = messages[messages.length - 1];
+        const groupName = lastMessage?.metadata?.groupName || 'Unknown Group';
+        
+        data.stats.groupStats[groupId] = {
+          groupName: groupName, // 🆕 Include group name in stats
+          messageCount: messages.length,
+          lastMessage: lastMessage?.timestamp || 0
+        };
+        
+        data.messages[groupId] = messages;
       }
       
-      await fs.rename(tempPath, this.filePath);
-      
-      console.log(`💾 Saved messages to file, proceeding with curating`);
-      
-      // 🆕 Trigger OpenAI curation after saving
-      await this.triggerCuration();
-      
-      return true;
+      await fs.writeFile(this.filePath, JSON.stringify(data, null, 2));
+      console.log(`💾 Saved ${data.stats.totalMessages} messages from ${data.stats.totalGroups} groups to ${this.filePath}`);
     } catch (error) {
-      console.error('Error saving messages to file:', error);
-      return false;
+      console.error('Error saving to file:', error);
+      throw error;
     }
   }
 

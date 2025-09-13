@@ -1,12 +1,13 @@
 {
-  "lastUpdated": "2025-09-13T22:22:23.424Z",
+  "lastUpdated": "2025-09-13T23:01:47.149Z",
   "stats": {
     "totalGroups": 1,
-    "totalMessages": 21,
+    "totalMessages": 25,
     "groupStats": {
       "120363402098083507@g.us": {
-        "messageCount": 21,
-        "lastMessage": 1757802136
+        "groupName": "Test",
+        "messageCount": 25,
+        "lastMessage": 1757804498
       }
     }
   },
@@ -514,6 +515,106 @@
           "scrapedAt": "2025-09-13T22:22:21.996Z",
           "processed": true,
           "processedAt": "2025-09-13T22:22:23.424Z"
+        }
+      },
+      {
+        "id": "3A2C178229B6959A1A51",
+        "timestamp": 1757803808,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Mercadolibre quiebra tras 30 años de operación en la región gracias a la nueva administración",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T22:50:11.740Z",
+          "processed": true,
+          "processedAt": "2025-09-13T22:55:22.758Z"
+        }
+      },
+      {
+        "id": "3A4E8E93625B2B0E8AA6",
+        "timestamp": 1757804116,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Kavak inicia operaciones comerciales en Asia y África de manera sorpresiva",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T22:55:19.178Z",
+          "processed": true,
+          "processedAt": "2025-09-13T22:55:22.758Z"
+        }
+      },
+      {
+        "id": "3A2F9F84249A68BFECFC",
+        "timestamp": 1757804188,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "4 unicornios nuevos de hardware en latam que sorprendieron a todos en 2025",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T22:56:31.783Z",
+          "processed": true,
+          "processedAt": "2025-09-13T22:56:33.720Z"
+        }
+      },
+      {
+        "id": "3EB0567CC9C38C0C740E0B",
+        "timestamp": 1757804498,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Seed funding round closed: Colombian fintech raised $3.2M led by YC and Kaszek.",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T23:01:45.439Z",
+          "processed": true,
+          "processedAt": "2025-09-13T23:01:47.149Z"
         }
       }
     ]

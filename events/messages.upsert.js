@@ -43,7 +43,7 @@ module.exports = {
     // Message scraping for groups (only if not from bot)
     if (isGroup && !msg.key.fromMe && config.messageScraping?.enabled) {
       try {
-        await messageStorage.addMessage(from, msg);
+        await messageStorage.addMessage(from, msg, sock); // 🆕 Pass sock instance
       } catch (error) {
         logger.error(`Error scraping message: ${error.message}`);
       }
