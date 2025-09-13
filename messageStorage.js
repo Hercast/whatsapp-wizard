@@ -1,24 +1,28 @@
 const fs = require('fs').promises;
 const path = require('path');
 const config = require('./utils');
+const MessageCurator = require('./messageCurator');
 
 class MessageStorage {
   constructor() {
-    this.messages = new Map(); // groupId -> messages array
-    this.messageCount = new Map(); // groupId -> count
-    this.lastSaveTime = Date.now();
-    this.saveInterval = 30000; // Save every 30 seconds
-    this.rateLimiter = new Map(); // groupId -> last message time
-    
-    this.config = config.messageScraping || {};
+    console.log('🔧 [DEBUG] MessageStorage constructor called');
+    this.curator = new MessageCurator();
+    this.config = config.messageScraping;
+    this.filePath = this.config.filePath;
+    this.messages = new Map();
+    this.messageCount = new Map();
+    this.rateLimiter = new Map();
     this.humanConfig = this.config.humanBehavior || {};
     this.antiDetectionConfig = this.config.antiDetection || {};
     this.filtersConfig = this.config.filters || {};
     
-    // Initialize auto-save
-    if (this.config.saveToFile) {
-      setInterval(() => this.autoSave(), this.saveInterval);
-    }
+    // 🆕 Optional: Disable auto-save since we save immediately
+    // this.saveInterval = this.config.autoSave?.interval || 30000;
+    // if (this.config.autoSave?.enabled !== false) {
+    //   setInterval(() => this.autoSave(), this.saveInterval);
+    // }
+    
+    console.log('🔧 [DEBUG] MessageStorage initialized with immediate save mode');
   }
 
   /**
@@ -65,6 +69,15 @@ class MessageStorage {
     messages.push(processedMessage);
     
     console.log(`📥 Stored message from group ${groupId} (${messages.length} total)`);
+    
+    // 🆕 Save immediately after storing the message
+    try {
+      await this.saveToFile();
+      console.log(`💾 Message saved immediately to file`);
+    } catch (error) {
+      console.error('Error saving message immediately:', error);
+      // Don't throw - continue processing even if save fails
+    }
   }
 
   /**
@@ -72,10 +85,10 @@ class MessageStorage {
    */
   processMessage(messageData) {
     const processed = {
-      id: messageData.key?.id,
+      id: messageData.key?.id || 'unknown',
       timestamp: messageData.messageTimestamp || Date.now(),
       sender: {
-        id: messageData.key?.participant || messageData.key?.remoteJid,
+        id: messageData.key?.participant || messageData.key?.remoteJid || 'unknown',
         name: messageData.pushName || 'Unknown',
         isBot: messageData.key?.fromMe || false
       },
@@ -83,15 +96,16 @@ class MessageStorage {
         text: this.extractText(messageData.message),
         type: this.getMessageType(messageData.message),
         hasMedia: this.hasMedia(messageData.message),
-        isForwarded: !!messageData.message?.extendedTextMessage?.contextInfo?.forwardingScore,
+        isForwarded: messageData.message?.extendedTextMessage?.contextInfo?.isForwarded || false,
         quotedMessage: this.extractQuotedMessage(messageData.message)
       },
       metadata: {
         groupId: messageData.key?.remoteJid,
-        messageType: Object.keys(messageData.message || {})[0],
-        deviceType: messageData.deviceType,
+        messageType: messageData.message ? Object.keys(messageData.message)[0] : 'unknown',
         scraped: true,
-        scrapedAt: new Date().toISOString()
+        scrapedAt: new Date().toISOString(),
+        processed: false,
+        processedAt: null
       }
     };
     
@@ -291,8 +305,9 @@ class MessageStorage {
   /**
    * Manual save
    */
+  // 🔧 FIX: Update manual save to use saveToFile
   async save() {
-    await this.autoSave();
+    await this.saveToFile(); // Changed from this.autoSave()
   }
 
   /**
@@ -335,6 +350,102 @@ class MessageStorage {
     this.messages.clear();
     this.messageCount.clear();
     this.rateLimiter.clear();
+  }
+
+  async saveToFile() {
+    try {
+      const data = {
+        lastUpdated: new Date().toISOString(),
+        stats: this.getStats(),
+        messages: Object.fromEntries(this.messages)
+      };
+
+      // Atomic write with backup
+      const tempPath = this.filePath + '.tmp';
+      await fs.writeFile(tempPath, JSON.stringify(data, null, 2));
+      
+      // Check if file exists using fs.access instead of fs.existsSync
+      try {
+        await fs.access(this.filePath);
+        await fs.copyFile(this.filePath, this.filePath + '.backup');
+      } catch (error) {
+        // File doesn't exist, skip backup
+      }
+      
+      await fs.rename(tempPath, this.filePath);
+      
+      console.log(`💾 Saved messages to file, proceeding with curating`);
+      
+      // 🆕 Trigger OpenAI curation after saving
+      await this.triggerCuration();
+      
+      return true;
+    } catch (error) {
+      console.error('Error saving messages to file:', error);
+      return false;
+    }
+  }
+
+  async markMessagesAsProcessed(messageIds) {
+    console.log(`📝 Marking ${messageIds.length} messages as processed...`);
+    
+    // Update messages in memory
+    for (const [groupId, messages] of this.messages) {
+      for (const message of messages) {
+        if (messageIds.includes(message.id)) {
+          message.metadata.processed = true;
+          message.metadata.processedAt = new Date().toISOString();
+        }
+      }
+    }
+    
+    // Save updated data to file
+    await this.saveToFile();
+    console.log(`✅ Successfully marked ${messageIds.length} messages as processed`);
+  }
+
+  async hasUnprocessedMessages() {
+    try {
+      const data = JSON.parse(await fs.readFile(this.filePath, 'utf8'));
+      
+      if (!data.messages) return false;
+      
+      for (const groupMessages of Object.values(data.messages)) {
+        for (const message of groupMessages) {
+          if (!message.metadata.processed) {
+            return true;
+          }
+        }
+      }
+      
+      return false;
+    } catch (error) {
+      console.error('Error checking for unprocessed messages:', error);
+      return true; // Default to true to ensure curation runs if there's an error
+    }
+  }
+
+  async triggerCuration() {
+    try {
+      // Check if there are unprocessed messages before triggering curation
+      const hasUnprocessed = await this.hasUnprocessedMessages();
+      
+      if (!hasUnprocessed) {
+        console.log('📭 No unprocessed messages found, skipping curation');
+        return;
+      }
+      
+      console.log('🤖 Triggering OpenAI message curation for unprocessed messages...');
+      const result = await this.curator.processScrapedMessages(this.filePath);
+      
+      // Mark processed messages
+      if (result && result.processedMessageIds && result.processedMessageIds.length > 0) {
+        await this.markMessagesAsProcessed(result.processedMessageIds);
+      }
+    } catch (error) {
+      console.error('Error during curation:', error);
+      // Don't throw - curation failure shouldn't break message saving
+    }
   }
 }
 

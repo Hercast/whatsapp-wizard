@@ -1,0 +1,51 @@
+{
+  "lastUpdated": "2025-09-13T22:22:23.424Z",
+  "curatedBy": "openai-gpt-4o-mini",
+  "totalEvaluated": 1,
+  "totalRelevant": 0,
+  "totalMessages": 3,
+  "messages": [
+    {
+      "id": "3A0894223527C74142CF",
+      "text": "Yummy se convierte en el primer unicornio de Venezuela",
+      "ts": "2025-09-13T22:18:31.000Z",
+      "author": "Hermes",
+      "groupId": "120363402098083507@g.us",
+      "messageType": "text",
+      "curation": {
+        "relevance": 1,
+        "category": "latam",
+        "reason": "Yummy becoming the first unicorn in Venezuela is a significant milestone in the LatAm startup ecosystem, showcasing growth and innovation in the region.",
+        "curatedAt": "2025-09-13T22:18:42.069Z"
+      }
+    },
+    {
+      "id": "3AE240EF214EE7D68756",
+      "text": "Allspice alcanza los 100M ARR en dos años",
+      "ts": "2025-09-13T22:15:59.000Z",
+      "author": "Hermes",
+      "groupId": "120363402098083507@g.us",
+      "messageType": "text",
+      "curation": {
+        "relevance": 0.9,
+        "category": "latam",
+        "reason": "Allspice reaching 100M ARR in two years indicates strong growth and scalability, which is relevant for startups in the LatAm market.",
+        "curatedAt": "2025-09-13T22:18:42.069Z"
+      }
+    },
+    {
+      "id": "3A4822B050DC0BDB996E",
+      "text": "Allspice lanza un nuevo AI copilot para hardware design sin precendentes",
+      "ts": "2025-09-13T22:20:24.000Z",
+      "author": "Hermes",
+      "groupId": "120363402098083507@g.us",
+      "messageType": "text",
+      "curation": {
+        "relevance": 0.9,
+        "category": "AI",
+        "reason": "Allspice's launch of a new AI copilot for hardware design is highly relevant to the user's interests in hardware engineering and AI, indicating innovation in the field.",
+        "curatedAt": "2025-09-13T22:20:29.008Z"
+      }
+    }
+  ]
+}
