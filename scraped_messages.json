@@ -1,0 +1,39 @@
+{
+  "lastUpdated": "2025-09-13T19:19:15.297Z",
+  "stats": {
+    "totalGroups": 1,
+    "totalMessages": 1,
+    "groupStats": {
+      "120363402098083507@g.us": {
+        "messageCount": 1,
+        "lastMessage": 1757790906
+      }
+    }
+  },
+  "messages": {
+    "120363402098083507@g.us": [
+      {
+        "id": "3A64B7FF070DC31CD94A",
+        "timestamp": 1757790906,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Que fue todo bien?",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-13T19:15:13.334Z"
+        }
+      }
+    ]
+  }
+}

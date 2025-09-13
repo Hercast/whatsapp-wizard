@@ -86,4 +86,38 @@ async function startBot() {
   }
 }
 
+// Graceful shutdown handling
+process.on('SIGINT', async () => {
+  console.log('\n🛑 Shutting down gracefully...');
+  
+  try {
+    // Save scraped messages before exit
+    const messagesHandler = require('./events/messages.upsert.js');
+    const messageStorage = messagesHandler.getMessageStorage();
+    await messageStorage.save();
+    console.log('💾 Messages saved successfully');
+  } catch (error) {
+    console.error('Error saving messages on shutdown:', error);
+  }
+  
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  console.log('\n🛑 Received SIGTERM, shutting down gracefully...');
+  
+  try {
+    const messagesHandler = require('./events/messages.upsert.js');
+    const messageStorage = messagesHandler.getMessageStorage();
+    await messageStorage.save();
+    console.log('💾 Messages saved successfully');
+  } catch (error) {
+    console.error('Error saving messages on shutdown:', error);
+  }
+  
+  process.exit(0);
+});
+
+console.log('🤖 WhatsApp Wizard is running...');
+
 startBot();

@@ -1,14 +1,21 @@
 // Event Handler: messages.upsert
-// Description: Handles incoming messages (real-time and offline sync), parses commands, and executes them if matched.
+// Description: Handles incoming messages, scrapes group messages, parses commands, and executes them.
 // Triggers when a new message is received in the chat.
 
 const config = require("./../utils");
+const MessageStorage = require("./../messageStorage");
 const prefix = config.bot?.prefix || "!";
+
+// Initialize message storage
+const messageStorage = new MessageStorage();
+
+// Load existing messages on startup
+messageStorage.load().catch(console.error);
 
 module.exports = {
   eventName: "messages.upsert",
   /**
-   * Handles new incoming messages and executes commands.
+   * Handles new incoming messages, scrapes them, and executes commands.
    * @param {object} sock - The WhatsApp socket instance.
    * @param {object} logger - Logger for logging info and errors.
    * @param {Map} commands - Map of available commands.
@@ -16,36 +23,34 @@ module.exports = {
    */
   handler: (sock, logger, commands) => async ({ messages }) => {
     const msg = messages[0];
-    if (!msg.message || msg.key.fromMe) return;
+    if (!msg.message) return;
     
     const from = msg.key.remoteJid;
-    const text = msg.message.conversation || msg.message.extendedTextMessage?.text;
-    
-    // Enhanced logging for all received messages
-    const messageType = Object.keys(msg.message)[0];
     const isGroup = from.endsWith('@g.us');
-    const chatType = isGroup ? 'Group' : 'Private';
+    const text = msg.message.conversation || msg.message.extendedTextMessage?.text;
     const sender = msg.pushName || 'Unknown';
+    const messageType = Object.keys(msg.message)[0];
     
-    // Log all incoming messages
+    // Enhanced logging for all messages
+    const chatType = isGroup ? 'Group' : 'Private';
+    
     if (text) {
-      logger.info(`📨 [${chatType}] Message from ${sender} (${from}): ${text}`);
+      logger.info(`📨 [${chatType}] Message from ${sender}: ${text.substring(0, 100)}${text.length > 100 ? '...' : ''}`);
     } else {
-      logger.info(`📨 [${chatType}] ${messageType} message from ${sender} (${from})`);
+      logger.info(`📨 [${chatType}] ${messageType} from ${sender}`);
     }
     
-    // Additional detailed logging for different message types
-    if (msg.message.imageMessage) {
-      logger.info(`🖼️  Image received - Caption: ${msg.message.imageMessage.caption || 'No caption'}`);
-    } else if (msg.message.videoMessage) {
-      logger.info(`🎥 Video received - Caption: ${msg.message.videoMessage.caption || 'No caption'}`);
-    } else if (msg.message.audioMessage) {
-      logger.info(`🎵 Audio message received`);
-    } else if (msg.message.documentMessage) {
-      logger.info(`📄 Document received: ${msg.message.documentMessage.fileName || 'Unknown file'}`);
-    } else if (msg.message.stickerMessage) {
-      logger.info(`😀 Sticker received`);
+    // Message scraping for groups (only if not from bot)
+    if (isGroup && !msg.key.fromMe && config.messageScraping?.enabled) {
+      try {
+        await messageStorage.addMessage(from, msg);
+      } catch (error) {
+        logger.error(`Error scraping message: ${error.message}`);
+      }
     }
+    
+    // Skip command processing for bot's own messages
+    if (msg.key.fromMe) return;
     
     // Command processing (existing logic)
     if (!text || !text.startsWith(prefix)) return;
@@ -64,5 +69,8 @@ module.exports = {
     } else {
       logger.info(`❓ Unknown command: ${cmdName}`);
     }
-  }
+  },
+  
+  // Export message storage for external access
+  getMessageStorage: () => messageStorage
 };

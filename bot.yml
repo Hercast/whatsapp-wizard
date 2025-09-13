@@ -1,20 +1,42 @@
-# =====================
-# WhatsApp Bot Settings
-# =====================
-bot:
-  name: "El Chismoso" # The display name of your bot
-  online: true # Should the bot appear online?
-  prefix: ">" # Command prefix (e.g., !, >, /)
-  history: false # Enable/disable chat history
+whatsapp:
+  name: "WhatsApp Wizard"
+  status: "online"
+  prefix: "!"
+  chatHistory: 10
 
-# =====================
-# Logging
-# =====================
 logging:
-  level: info # Log level: error, warn, info, debug
-  logToFile: true # Save logs to file
+  level: "info"
+  logToFile: true
 
-# =====================
-# Advanced/Experimental
-# =====================
-# Add more config options as needed
+# New message scraping configuration
+messageScraping:
+  enabled: true
+  groupsOnly: true
+  maxMessagesPerGroup: 1000
+  saveToFile: true
+  filePath: "./scraped_messages.json"
+  
+  # Human-like behavior settings
+  humanBehavior:
+    enabled: true
+    readDelay:
+      min: 2000  # 2 seconds
+      max: 8000  # 8 seconds
+    batchSize: 5   # Process messages in small batches
+    pauseBetweenBatches: 15000  # 15 seconds pause
+    randomizeTimings: true
+    
+  # Anti-detection measures
+  antiDetection:
+    respectRateLimit: true
+    maxMessagesPerMinute: 10
+    simulateTyping: false  # Don't simulate typing for scraping
+    randomUserAgent: true
+    
+  # Message filtering
+  filters:
+    minLength: 10  # Minimum message length
+    maxLength: 2000  # Maximum message length
+    excludeMedia: false  # Include media messages
+    excludeForwarded: true  # Exclude forwarded messages
+    excludeDeleted: true   # Exclude deleted messages
