@@ -15,6 +15,9 @@ class MessageStorage {
     this.humanConfig = this.config.humanBehavior || {};
     this.antiDetectionConfig = this.config.antiDetection || {};
     this.filtersConfig = this.config.filters || {};
+    this.testModeImmediateSave = process.env.TEST_MODE_IMMEDIATE_SAVE === 'true';
+    this.pendingMessages = [];
+    this.batchCount = 0;
     
     // 🆕 Optional: Disable auto-save since we save immediately
     // this.saveInterval = this.config.autoSave?.interval || 30000;
@@ -62,6 +65,14 @@ class MessageStorage {
       this.debouncedSave();
       this.pendingSaveCount = 0;
     }
+    
+    // NEW: Test mode immediate processing
+    if (this.testModeImmediateSave) {
+      console.log('🧪 TEST MODE: Processing message immediately');
+      await this.forceImmediateSaveAndCuration();
+    }
+    
+    return processedMessage;
   }
 
   async processMessageFast(messageData, sock = null, groupName = null) {
@@ -567,6 +578,39 @@ class MessageStorage {
     } catch (error) {
       console.error('Error during curation:', error);
       // Don't throw - curation failure shouldn't break message saving
+    }
+  }
+
+  /**
+   * Force immediate save and curation for testing purposes
+   * Only works when TEST_MODE_IMMEDIATE_SAVE is enabled
+   */
+  async forceImmediateSaveAndCuration() {
+    if (!this.testModeImmediateSave) {
+      console.log('⚠️ Immediate save/curation is disabled. Set TEST_MODE_IMMEDIATE_SAVE=true in .env to enable.');
+      return false;
+    }
+
+    try {
+      console.log('🧪 TEST MODE: Forcing immediate save and curation...');
+      
+      // Force save all pending messages
+      await this.saveToFile();
+      console.log('✅ TEST MODE: Messages saved immediately');
+      
+      // Force curation if there are unprocessed messages
+      const hasUnprocessed = await this.hasUnprocessedMessages();
+      if (hasUnprocessed) {
+        await this.triggerCuration();
+        console.log('✅ TEST MODE: Curation completed immediately');
+      } else {
+        console.log('ℹ️ TEST MODE: No unprocessed messages to curate');
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('❌ TEST MODE: Error during immediate save/curation:', error);
+      return false;
     }
   }
 }

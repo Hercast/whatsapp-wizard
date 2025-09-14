@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2025-09-14T02:01:06.976Z",
+  "lastUpdated": "2025-09-14T02:20:05.164Z",
   "stats": {
     "totalGroups": 3,
-    "totalMessages": 39,
+    "totalMessages": 49,
     "groupStats": {
       "120363402098083507@g.us": {
         "groupName": "Test",
-        "messageCount": 29,
-        "lastMessage": 1757806957
+        "messageCount": 36,
+        "lastMessage": 1757816214
       },
       "120363423264036001@g.us": {
         "groupName": "Grupo de condominio",
-        "messageCount": 9,
-        "lastMessage": 1757815208
+        "messageCount": 11,
+        "lastMessage": 1757816215
       },
       "120363422311176765@g.us": {
         "groupName": "RBR Palo Alto",
-        "messageCount": 1,
-        "lastMessage": 1757815261
+        "messageCount": 2,
+        "lastMessage": 1757815480
       }
     }
   },
@@ -726,6 +726,181 @@
           "processed": true,
           "processedAt": "2025-09-13T23:42:42.854Z"
         }
+      },
+      {
+        "id": "3AD877D802C8E69BB2F2",
+        "timestamp": 1757815680,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Prueba",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:08:01.418Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:15:07.938Z"
+        }
+      },
+      {
+        "id": "3A410F30B3FC3682306F",
+        "timestamp": 1757815687,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Hello",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:08:07.800Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:15:07.938Z"
+        }
+      },
+      {
+        "id": "3A6D351F5EBA0EB30BE7",
+        "timestamp": 1757815695,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Quien está por ahí wey",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:08:16.035Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:15:07.938Z"
+        }
+      },
+      {
+        "id": "3AF9E6780210B4598FA7",
+        "timestamp": 1757815719,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "No lo sé",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:08:39.876Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:15:07.938Z"
+        }
+      },
+      {
+        "id": "3A62F6F97BBDCE6FE324",
+        "timestamp": 1757815726,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Demo Day next week at SF’s Mission HQ — 12 LatAm startups pitching. Sam Altman is presenting the new AGI product",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:08:46.796Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:15:07.938Z"
+        }
+      },
+      {
+        "id": "3A38E46A0B791A141B50",
+        "timestamp": 1757816100,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "Más pruebas",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:15:01.045Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:15:07.938Z"
+        }
+      },
+      {
+        "id": "3A6678ED348491BCC760",
+        "timestamp": 1757816214,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "La señora del piso 23 se le olvidó la ropa tendida afuera en la terraza y empezó a llover",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363402098083507@g.us",
+          "groupName": "Test",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:16:54.274Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:16:57.332Z"
+        }
       }
     ],
     "120363423264036001@g.us": [
@@ -953,6 +1128,56 @@
           "processed": true,
           "processedAt": "2025-09-14T02:00:12.635Z"
         }
+      },
+      {
+        "id": "3EB0363FF834211018FF60",
+        "timestamp": 1757816214,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "anyone down for a soccer game later? ⚽️",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:16:55.091Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:16:58.007Z"
+        }
+      },
+      {
+        "id": "3EB004176D14CE4BE28413",
+        "timestamp": 1757816215,
+        "sender": {
+          "id": "17864510835@s.whatsapp.net",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "btw OpenAI dropped new GPT update, seems way faster at code gen",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363423264036001@g.us",
+          "groupName": "Grupo de condominio",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:16:56.059Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:16:58.007Z"
+        }
       }
     ],
     "120363422311176765@g.us": [
@@ -979,6 +1204,31 @@
           "scrapedAt": "2025-09-14T02:01:04.887Z",
           "processed": true,
           "processedAt": "2025-09-14T02:01:06.976Z"
+        }
+      },
+      {
+        "id": "3EB01935EF2D18767F49AB",
+        "timestamp": 1757815480,
+        "sender": {
+          "id": "62440603705427@lid",
+          "name": "Hermes",
+          "isBot": false
+        },
+        "content": {
+          "text": "No worries!",
+          "type": "text",
+          "hasMedia": false,
+          "isForwarded": false,
+          "quotedMessage": null
+        },
+        "metadata": {
+          "groupId": "120363422311176765@g.us",
+          "groupName": "RBR Palo Alto",
+          "messageType": "conversation",
+          "scraped": true,
+          "scrapedAt": "2025-09-14T02:04:44.640Z",
+          "processed": true,
+          "processedAt": "2025-09-14T02:04:46.689Z"
         }
       }
     ]

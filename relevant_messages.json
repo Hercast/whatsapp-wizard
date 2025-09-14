@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2025-09-14T02:01:06.973Z",
+  "lastUpdated": "2025-09-14T02:16:57.904Z",
   "curatedBy": "openai-gpt-4o-mini",
-  "totalEvaluated": 1,
-  "totalRelevant": 0,
-  "totalMessages": 10,
+  "totalEvaluated": 2,
+  "totalRelevant": 1,
+  "totalMessages": 12,
   "messages": [
     {
       "id": "3A0894223527C74142CF",
@@ -103,6 +103,23 @@
       "notifiedAt": "2025-09-13T23:42:46.716Z"
     },
     {
+      "id": "3A62F6F97BBDCE6FE324",
+      "text": "Demo Day next week at SF’s Mission HQ — 12 LatAm startups pitching. Sam Altman is presenting the new AGI product",
+      "ts": "2025-09-14T02:08:46.000Z",
+      "author": "Hermes",
+      "groupId": "120363402098083507@g.us",
+      "groupName": "Test",
+      "messageType": "text",
+      "curation": {
+        "relevance": 1,
+        "category": "latam",
+        "reason": "This message provides specific details about a Demo Day in San Francisco featuring 12 LatAm startups, which aligns perfectly with the user's interests in startups and the LatAm tech scene.",
+        "curatedAt": "2025-09-14T02:15:07.837Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-14T02:15:07.938Z"
+    },
+    {
       "id": "3AE240EF214EE7D68756",
       "text": "Allspice alcanza los 100M ARR en dos años",
       "ts": "2025-09-13T22:15:59.000Z",
@@ -160,6 +177,23 @@
       },
       "notified": true,
       "notifiedAt": "2025-09-13T23:21:52.548Z"
+    },
+    {
+      "id": "3EB004176D14CE4BE28413",
+      "text": "btw OpenAI dropped new GPT update, seems way faster at code gen",
+      "ts": "2025-09-14T02:16:55.000Z",
+      "author": "Hermes",
+      "groupId": "120363423264036001@g.us",
+      "groupName": "Grupo de condominio",
+      "messageType": "text",
+      "curation": {
+        "relevance": 0.8,
+        "category": "AI",
+        "reason": "The message mentions a new GPT update from OpenAI, which is relevant to the user's interest in AI and generative technologies.",
+        "curatedAt": "2025-09-14T02:16:57.904Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-14T02:16:58.006Z"
     }
   ]
 }
