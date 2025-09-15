@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2025-09-14T02:01:06.973Z",
+  "lastUpdated": "2025-09-14T19:59:58.256Z",
   "curatedBy": "openai-gpt-4o-mini",
   "totalEvaluated": 1,
   "totalRelevant": 0,
-  "totalMessages": 10,
+  "totalMessages": 14,
   "messages": [
     {
       "id": "3A0894223527C74142CF",
@@ -103,6 +103,40 @@
       "notifiedAt": "2025-09-13T23:42:46.716Z"
     },
     {
+      "id": "3B90D04D45F9200E70F6",
+      "text": "we finally signed our seed docs today 🙌 $1.8M round led by a SF vc 🎉",
+      "ts": "2025-09-14T02:43:43.000Z",
+      "author": "Rich",
+      "groupId": "120363422311176765@g.us",
+      "groupName": "RBR Palo Alto",
+      "messageType": "senderKeyDistributionMessage",
+      "curation": {
+        "relevance": 1,
+        "category": "venture-capital",
+        "reason": "This message announces a recent $1.8M seed funding round led by a San Francisco VC, which is highly relevant to the user's interests in startups and venture capital.",
+        "curatedAt": "2025-09-14T02:43:49.118Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-14T02:43:49.592Z"
+    },
+    {
+      "id": "3AD383C2A8182FF9B4A2",
+      "text": "Seed funding round closed: Venezuelan fintech raised $100M led by Sequoia and 500.",
+      "ts": "2025-09-14T03:32:12.000Z",
+      "author": "Hermes",
+      "groupId": "120363423264036001@g.us",
+      "groupName": "Grupo de condominio",
+      "messageType": "text",
+      "curation": {
+        "relevance": 1,
+        "category": "latam",
+        "reason": "This message details a significant funding round for a Venezuelan fintech, providing a concrete amount ($100M) and notable investors (Sequoia and 500), aligning perfectly with the user's interests in LatAm startups and venture capital.",
+        "curatedAt": "2025-09-14T03:32:18.161Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-14T03:32:18.323Z"
+    },
+    {
       "id": "3AE240EF214EE7D68756",
       "text": "Allspice alcanza los 100M ARR en dos años",
       "ts": "2025-09-13T22:15:59.000Z",
@@ -143,6 +177,40 @@
         "reason": "Mentions 4 new hardware unicorns in LatAm, which aligns with the user's interest in LatAm startups and hardware design.",
         "curatedAt": "2025-09-13T22:56:33.719Z"
       }
+    },
+    {
+      "id": "3AEED330E13538B7CCD9",
+      "text": "demo day tonight at 500… 2 venezuelan startups in the batch, should be. Let me know if anyone waqnts to go🔥",
+      "ts": "2025-09-14T03:50:04.000Z",
+      "author": "Rich",
+      "groupId": "120363422311176765@g.us",
+      "groupName": "RBR Palo Alto",
+      "messageType": "text",
+      "curation": {
+        "relevance": 0.9,
+        "category": "latam",
+        "reason": "The message mentions a demo day featuring Venezuelan startups, which is highly relevant to the user's interest in LatAm startups and provides an actionable opportunity to attend.",
+        "curatedAt": "2025-09-14T03:50:12.071Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-14T03:50:12.278Z"
+    },
+    {
+      "id": "3A835DCCBE72075B45E9",
+      "text": "Tonight there is a demo day at 500… 2 venezuelan startups are in the batch, should be really cool. Some people are saying they have unicorn potential. Let me know if anyone wants to go🔥",
+      "ts": "2025-09-14T03:50:16.000Z",
+      "author": "Rich",
+      "groupId": "120363422311176765@g.us",
+      "groupName": "RBR Palo Alto",
+      "messageType": "text",
+      "curation": {
+        "relevance": 0.9,
+        "category": "latam",
+        "reason": "Relevant demo day featuring Venezuelan startups with potential unicorn status; connects to user interests in LatAm startups and venture capital.",
+        "curatedAt": "2025-09-14T03:50:25.601Z"
+      },
+      "notified": true,
+      "notifiedAt": "2025-09-14T03:50:25.747Z"
     },
     {
       "id": "3EB0652B23BEB5D735178A",
